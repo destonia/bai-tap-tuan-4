@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xây dựng đối tượng mô tả hình chữ nhật</title>
+    <style>
+        canvas {
+            border: solid black;
+        }
+
+    </style>
+</head>
+<body>
+<canvas id="myArea" height="300" width="500"></canvas>
+</body>
+<script>
+    function Rectangle(height, width) {
+        this.height = height;
+        this.width = width;
+        this.getArea = function () {
+            return height * width;
+        }
+        this.getPerimeter = function () {
+            return 2 * (height + width);
+        }
+    }
+
+    function createRect() {
+        let ctx = document.getElementById('myArea').getContext('2d')
+        let rect = new Rectangle(100, 80);
+        ctx.beginPath();
+        ctx.rect(50, 50, rect.width, rect.height);
+        ctx.fillStyle= 'rgb(255,0,255)';
+        ctx.fill();
+        let p = rect.getPerimeter()
+        let s = rect.getArea()
+        document.write(p + '<br>' + s);
+    }
+
+    createRect();
+</script>
+</html>
